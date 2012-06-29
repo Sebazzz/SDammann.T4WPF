@@ -26,6 +26,7 @@ Let's say we have a 'RegistrationPage.xaml' in the 'Pages/Auth' folder. We want 
 - 'username' with value 'Sebazzz'
 
 We can navigate to this page via these three ways:
+
     this.NavigationService.NavigateTo(
         NavigationDestination.Pages.Auth.RegistrationPage.WithQuery(
             new Dictionary<string, object> {
