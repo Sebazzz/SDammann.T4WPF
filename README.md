@@ -27,7 +27,7 @@ Let's say we have a 'RegistrationPage.xaml' in the 'Pages/Auth' folder. We want 
 
 We can navigate to this page via these three ways:
     this.NavigationService.NavigateTo(
-        NavigationDestination.Pages.MainPage.WithQuery(
+        NavigationDestination.Pages.Auth.RegistrationPage.WithQuery(
             new Dictionary<string, object> {
                                                     {"useFacebook", true},
                                                     {"username", "Sebazzz"}
@@ -35,14 +35,14 @@ We can navigate to this page via these three ways:
         ));
 
     this.NavigationService.NavigateTo(
-        NavigationDestination.Pages.MainPage.WithQuery(
+        NavigationDestination.Pages.Auth.RegistrationPage.WithQuery(
             "useFacebook", true,
             "username", "Sebazzz"));
 
     this.NavigationService.NavigateTo(
-        NavigationDestination.Pages.MainPage.WithQuery("useFacebook=true&username=Sebazzz"));
+        NavigationDestination.Pages.Auth.RegistrationPage.WithQuery("useFacebook=true&username=Sebazzz"));
 	
-All ways are functional equavalent.
+All ways are equivalent.
 	
 ## Wish-list
 The current unimplemented wish-list. Most of these items matter in most of the projects:
