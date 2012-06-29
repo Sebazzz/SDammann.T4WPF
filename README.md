@@ -46,7 +46,7 @@ We can navigate to this page via these three ways:
 All ways are equivalent.
 	
 ## Wish-list
-The current unimplemented wish-list. Most of these items matter in most of the projects:
+The current unimplemented wish-list. Most of these items don't matter in most of the projects are edge-cases:
 - Check if Page is really a Page via interop
 - Also handle files linked into the project
 
