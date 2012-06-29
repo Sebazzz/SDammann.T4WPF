@@ -18,6 +18,31 @@ First, make sure the text template is added to your project: Download the [NuGet
 
 Then, in any call to `NavigationService.Navigate` method, you can use one of the members of the `NavigationDestination` generated class or its subclasses as parameter. Its that simple! :)
 
+Let's say we have a 'SettingsPage.xaml' in the 'Pages' folder. We can navigate to this page via this way:
+    this.NavigationService.Navigate(NavigationDestination.Pages.SettingsPage);
+
+Let's say we have a 'RegistrationPage.xaml' in the 'Pages/Auth' folder. We want to pass two parameters: 
+- 'useFacebook' with value 'true' and
+- 'username' with value 'Sebazzz'
+We can navigate to this page via these three ways:
+    this.NavigationService.NavigateTo(
+        NavigationDestination.Pages.MainPage.WithQuery(
+            new Dictionary<string, object> {
+                                                    {"useFacebook", true},
+                                                    {"username", "Sebazzz"}
+                                            }
+        ));
+
+    this.NavigationService.NavigateTo(
+        NavigationDestination.Pages.MainPage.WithQuery(
+            "useFacebook", true,
+            "username", "Sebazzz"));
+
+    this.NavigationService.NavigateTo(
+        NavigationDestination.Pages.MainPage.WithQuery("useFacebook=true&username=Sebazzz"));
+		
+	All ways are functional equavalent.
+	
 ## Wish-list
 The current unimplemented wish-list. Most of these items matter in most of the projects:
 - Check if Page is really a Page via interop
