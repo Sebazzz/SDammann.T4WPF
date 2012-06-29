@@ -41,8 +41,8 @@ We can navigate to this page via these three ways:
 
     this.NavigationService.NavigateTo(
         NavigationDestination.Pages.MainPage.WithQuery("useFacebook=true&username=Sebazzz"));
-		
-	All ways are functional equavalent.
+	
+All ways are functional equavalent.
 	
 ## Wish-list
 The current unimplemented wish-list. Most of these items matter in most of the projects:
