@@ -42,6 +42,9 @@ We can navigate to this page via these three ways:
 
     this.NavigationService.NavigateTo(
         NavigationDestination.Pages.Auth.RegistrationPage.WithQuery("useFacebook=true&username=Sebazzz"));
+		
+	this.NavigationService.NavigateTo(
+        NavigationDestination.Pages.Auth.RegistrationPage.WithQuery(new {useFacebook=true, username=Sebazzz}));
 	
 All ways are equivalent.
 	
