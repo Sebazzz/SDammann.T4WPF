@@ -43,6 +43,7 @@ PageDirectory currentDir = GeneratePageLinksForDirectory(currentDirectory);
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace <#=TryDetectProjectNamespace()#> {
 	/// <summary>
@@ -172,6 +173,18 @@ namespace <#=TryDetectProjectNamespace()#> {
             return WithQuery(query.ToString());
         }
 
+		/// <summary>
+        /// Returns a <see cref="<#=PageClassName#>"/> object a specified query string attached. The object specified is an anonymous object.
+        /// </summary>
+        /// <param name="anonymousQueryStringSpecifier">The query parameters in the form of an anonymous object..</param>
+        /// <returns></returns>
+        public <#=PageClassName#> WithQuery(object anonymousQueryStringSpecifier) {
+            return WithQuery(
+                anonymousQueryStringSpecifier.GetType()
+                                             .GetProperties()
+                                             .ToDictionary(p => p.Name, p => p.GetValue(anonymousQueryStringSpecifier, null)));
+        }
+
         /// <summary>
         /// Returns a <see cref="<#=PageClassName#>"/> object with the specified query string attached. The query string is in format 
         /// of parameter=value&amp;parameter2=value2 and doesn't have to start with a question mark.
@@ -294,11 +307,6 @@ PageDirectory GeneratePageLinksForDirectory(string directoryPath) {
 	string projectRoot = Path.GetDirectoryName(Host.TemplateFile);
 	string relativeDirectory = directoryPath.Substring(projectRoot.Length).Replace(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
 	bool currentPathIsProjectRoot = relativeDirectory.Length == 0;
-
-	if (currentPathIsProjectRoot) {
-		relativeDirectory = Path.AltDirectorySeparatorChar.ToString();
-		directoryName = "App";
-	}
 
 	PageDirectory current = new PageDirectory(directoryName.Replace(".", ""), relativeDirectory);	
 
