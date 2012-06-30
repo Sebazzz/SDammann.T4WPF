@@ -34,6 +34,8 @@
             // enumerate and add
             int i = 1;
             foreach (KeyValuePair<string, string> pair in navigationArguments) {
+                g.RowDefinitions.Add(new RowDefinition());
+
                 TextBlock c1 = new TextBlock();
                 c1.Text = pair.Key;
                 g.Children.Add(c1);
