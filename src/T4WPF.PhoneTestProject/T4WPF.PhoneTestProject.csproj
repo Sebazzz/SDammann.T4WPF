@@ -126,4 +126,7 @@
   </Target>
   -->
   <ProjectExtensions />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)\StronglyTypedPageLinks.tt" "..\StronglyTypedPageLinks.tt"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
