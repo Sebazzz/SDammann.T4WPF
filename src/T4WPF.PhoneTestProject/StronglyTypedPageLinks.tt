@@ -183,9 +183,11 @@ namespace <#=TryDetectProjectNamespace()#> {
             return WithQuery(
                 anonymousQueryStringSpecifier.GetType()
 											<# if (IsProjectNet45()) {#>
-											.GetTypeInfo()
-											<# } #>
+											 .GetTypeInfo()
+											 .GetRuntimeProperties()
+											<# } else { #>
                                              .GetProperties()
+											<# } #>
                                              .ToDictionary(p => p.Name, p => p.GetValue(anonymousQueryStringSpecifier, null)));
         }
 
@@ -270,7 +272,7 @@ namespace <#=TryDetectProjectNamespace()#> {
 <#+
 const string DefaultPageNamespace = "T4Navigation";
 const string PageClassName = "_NavigationPageDestination";
-static EnvDTE.Project CurrentProject;
+static EnvDTE.Project CurrentProject; 
 
 string TryDetectProjectNamespace() {
 	return CurrentProject.Properties.Item("DefaultNamespace").Value.ToString();
