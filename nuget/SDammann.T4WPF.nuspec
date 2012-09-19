@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <authors>Sebastiaan Dammann</authors>
     <owners>Sebastiaan Dammann</owners>
     <projectUrl>https://github.com/Sebazzz/SDammann.T4WPF</projectUrl>
@@ -10,7 +10,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The file generates strongly-typed helpers for page navigation via NavigationService in WPF, Silverlight, Windows Phone and WinRT. It is inspired by the T4MVC project.</description>
     <summary>Strongly-typed navigation page link generator T4-file for WPF, Silverlight, Windows Phone and WinRT.</summary>
-    <releaseNotes>The current features include:
+    <releaseNotes>
+	Version 1.1.1:
+	- Support for .NET 4.5 Metro apps
+	
+	Version 1.1.0:
 - Strongly-typed documented helpers
 - Supports nested pages in directories
 - Helper object with methods to add navigation arguments</releaseNotes>
