@@ -183,7 +183,6 @@ namespace <#=TryDetectProjectNamespace()#> {
             return WithQuery(
                 anonymousQueryStringSpecifier.GetType()
 											<# if (IsProjectNet45()) {#>
-											 .GetTypeInfo()
 											 .GetRuntimeProperties()
 											<# } else { #>
                                              .GetProperties()
@@ -279,7 +278,19 @@ string TryDetectProjectNamespace() {
 }
 
 bool IsProjectNet45() {
-	Property targetFrameworkProp = CurrentProject.Properties.OfType<Property>().First(p => p.Name == "TargetFrameworkMoniker");
+	Property targetFrameworkProp = CurrentProject.Properties.OfType<Property>().FirstOrDefault(p => p.Name == "TargetFrameworkMoniker");
+	if (targetFrameworkProp == null) {
+		// try output type
+		Property outputTypeProp = CurrentProject.Properties.OfType<Property>().FirstOrDefault(p => p.Name == "OutputType");
+		
+		if (outputTypeProp == null) {
+			return false;
+        }
+
+		return String.Equals(targetFrameworkProp.Value.ToString(), "AppContainerExe", StringComparison.OrdinalIgnoreCase);
+    }
+
+
 	string val = targetFrameworkProp.Value.ToString();
 
 	const string versionString = "Version=";
